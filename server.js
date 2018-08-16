@@ -11,8 +11,8 @@ const calendarItem = require("./routes/api/calendarItems");
 const app = express();
 
 // Body Parser middleware
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //Db Config
 const db = require("./config/keys").mongoURI;
