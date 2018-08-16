@@ -1,0 +1,27 @@
+{
+  "name": "bettys",
+  "version": "1.0.0",
+  "description": "The web presence for Betty's Bar & Grill",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Wesley Lewis <wesley.l.lewis@gmail.com> (http://wesleylewis.us)",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.8",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "prepend-http": "^2.0.0",
+    "validator": "^10.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
