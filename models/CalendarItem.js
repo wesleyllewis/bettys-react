@@ -1,10 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CalendarItemSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: 'users'
+  },
+  name: {
+    type: String,
+    ref: 'users'
   },
   title: {
     type: String,
@@ -18,6 +22,10 @@ const CalendarItemSchema = new Schema({
     type: Date,
     required: true
   },
+  time: {
+    type: String,
+    required: true
+  },
   createdDate: {
     type: Date,
     default: Date.now
@@ -28,6 +36,6 @@ const CalendarItemSchema = new Schema({
 });
 
 module.exports = CalendarItem = mongoose.model(
-  "calendarItem",
+  'calendarItem',
   CalendarItemSchema
 );
