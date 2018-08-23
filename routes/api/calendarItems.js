@@ -16,6 +16,31 @@ const User = require('../../models/User');
 // @access Public
 router.get('/test', (req, res) => res.json({ msg: 'CalendarItems works' }));
 
+// @route  GET api/calendarItems
+// @desc   Get all calendarItems
+// @access Public
+router.get('/', (req, res) => {
+  CalendarItem.find()
+    .sort({ date: -1 })
+    .then(calendarItems => res.json(calendarItems))
+    .catch(err =>
+      res.status(404).json({ noitemsfound: 'No calendar items found' })
+    );
+});
+
+// @route  GET api/calendarItems/:id
+// @desc   Get calendarItem by id
+// @access Public
+router.get('/:id', (req, res) => {
+  CalendarItem.findById(req.params.id)
+    .then(calendarItem => res.json(calendarItem))
+    .catch(err =>
+      res
+        .status(404)
+        .json({ noitemfound: 'No calendar item found with that id' })
+    );
+});
+
 // @route  POST api/calendarItems
 // @desc   Create CalendarItem
 // @access Private
