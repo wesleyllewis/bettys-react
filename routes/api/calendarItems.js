@@ -68,4 +68,30 @@ router.post(
   }
 );
 
+// @route  DELETE api/calendarItems/:id
+// @desc   Delete a calendarItem
+// @access Private
+router.delete(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    User.findOne({ user: req.user.id }).then(calendarItem => {
+      CalendarItem.findById(req.params.id).then(calendarItem => {
+        // Check for post owner
+        if (calendarItem.user.toString() !== req.user.id) {
+          return res.status(401).json({ notauthorized: 'User not authorized' });
+        }
+
+        // Delete
+        calendarItem
+          .remove()
+          .then(() => res.json({ success: true }))
+          .catch(err =>
+            res.status(404).json({ itemnotfound: 'No calendar item found' })
+          );
+      });
+    });
+  }
+);
+
 module.exports = router;
