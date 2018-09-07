@@ -14,7 +14,7 @@ class Login extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +47,7 @@ class Login extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+
   render() {
     const { errors } = this.state;
 
