@@ -1,6 +1,6 @@
 import {
   GET_CURRENT_USER,
-  CLEAR_CURRENT_PROFILE,
+  CLEAR_CURRENT_USER,
   PROFILE_LOADING
 } from '../actions/types';
 
@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
         user: action.payload,
         loading: false
       };
-    case CLEAR_CURRENT_PROFILE:
+    case CLEAR_CURRENT_USER:
       return {
         ...state,
         user: null

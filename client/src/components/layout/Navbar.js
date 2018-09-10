@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
+import { clearCurrentUser } from '../../actions/userActions';
 
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
-    // this.props.clearCurrentProfile();
+    this.props.clearCurrentUser();
     this.props.logoutUser();
   }
   render() {
@@ -21,8 +22,8 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/feed">
-            Post Feed
+          <Link className="nav-link" to="/dashboard">
+            {user.name}
           </Link>
         </li>
         <li className="nav-item">
@@ -31,13 +32,6 @@ class Navbar extends Component {
             onClick={this.onLogoutClick.bind(this)}
             className="nav-link"
           >
-            <img
-              className="rounded-circle"
-              src={user.avatar}
-              alt={user.name}
-              style={{ width: '25px', marginRight: '5px' }}
-              title="You must have a Gravatar connected to your email to display an image"
-            />
             Logout
           </a>
         </li>
@@ -46,11 +40,6 @@ class Navbar extends Component {
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to="/register">
-            Sign Up
-          </Link>
-        </li>
         <li className="nav-item">
           <Link className="nav-link" to="/login">
             Login
@@ -77,9 +66,21 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
+                <Link className="nav-link" to="/calendar">
                   {' '}
-                  Developers
+                  Calendar
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/menu">
+                  {' '}
+                  Menu
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact">
+                  {' '}
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -102,5 +103,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  { logoutUser, clearCurrentUser }
 )(Navbar);

@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   GET_CURRENT_USER,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE,
+  CLEAR_CURRENT_USER,
   GET_ERRORS,
   SET_CURRENT_USER
 } from './types';
@@ -34,9 +34,9 @@ export const setProfileLoading = () => {
   };
 };
 
-// Clear profile
-export const clearCurrentProfile = () => {
+// Clear user
+export const clearCurrentUser = () => {
   return {
-    type: CLEAR_CURRENT_PROFILE
+    type: CLEAR_CURRENT_USER
   };
 };
