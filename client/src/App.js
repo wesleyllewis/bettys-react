@@ -18,6 +18,7 @@ import Login from './components/auth/Login';
 import Contact from './components/layout/Contact';
 import FoodMenu from './components/layout/FoodMenu';
 import Dashboard from './components/dashboard/Dashboard';
+import Calendar from './components/calendar/Calendar';
 
 import './App.css';
 
@@ -50,6 +51,7 @@ class App extends Component {
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
+            <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/menu" component={FoodMenu} />
             <div className="container">
