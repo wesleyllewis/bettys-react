@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -41,7 +41,7 @@ class CalendarForm extends Component {
     };
 
     this.props.addItem(newItem);
-    // this.setState({ text: '' });
+    this.props.history.push('/dashboard');
   }
 
   onChange(e) {

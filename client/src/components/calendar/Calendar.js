@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CalendarForm from './CalendarForm';
+// import CalendarForm from './CalendarForm';
 import CalendarFeed from './CalendarFeed';
 import Spinner from '../common/Spinner';
 import { getItems } from '../../actions/calendarActions';
@@ -23,6 +23,7 @@ class Calendar extends Component {
     return (
       <div className="feed">
         <div className="container">
+          <h1 className="text-center mt-6 mb-3">Upcoming Shows at Betty's</h1>
           <div className="row">
             <div className="col-md-12">{itemContent}</div>
           </div>

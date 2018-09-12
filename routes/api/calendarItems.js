@@ -20,8 +20,8 @@ router.get('/test', (req, res) => res.json({ msg: 'CalendarItems works' }));
 // @desc   Get all calendarItems
 // @access Public
 router.get('/', (req, res) => {
-  CalendarItem.find()
-    .sort({ date: -1 })
+  CalendarItem.find({ date: { $gt: Date.now() } })
+    .sort({ date: 'asc' })
     .then(calendarItems => res.json(calendarItems))
     .catch(err =>
       res.status(404).json({ noitemsfound: 'No calendar items found' })

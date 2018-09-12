@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from '../common/Spinner';
+//import Spinner from '../common/Spinner';
 
 class Dashboard extends Component {
   render() {
@@ -14,6 +14,10 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Dashboard</h1>
+              <h5>Hello {user.name}</h5>
+              <Link to="/create-item" className="btn btn-lg btn-info">
+                Add A Show
+              </Link>
             </div>
           </div>
         </div>

@@ -1,12 +1,8 @@
 import axios from 'axios';
 
-import {
-  GET_CURRENT_USER,
-  PROFILE_LOADING,
-  CLEAR_CURRENT_USER,
-  GET_ERRORS,
-  SET_CURRENT_USER
-} from './types';
+import { GET_CURRENT_USER, PROFILE_LOADING, CLEAR_CURRENT_USER } from './types';
+// GET_ERRORS,
+// SET_CURRENT_USER
 
 // Get current user
 export const getCurrentUser = () => dispatch => {

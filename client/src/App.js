@@ -19,6 +19,8 @@ import Contact from './components/layout/Contact';
 import FoodMenu from './components/layout/FoodMenu';
 import Dashboard from './components/dashboard/Dashboard';
 import Calendar from './components/calendar/Calendar';
+import CalendarForm from './components/calendar/CalendarForm';
+import CalendarItem from './components/calendar/CalendarItem';
 
 import './App.css';
 
@@ -54,13 +56,22 @@ class App extends Component {
             <Route exact path="/calendar" component={Calendar} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/menu" component={FoodMenu} />
+            <Route exact path="/calendarItems/:id" component={CalendarItem} />
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/create-item"
+                  component={CalendarForm}
+                />
+              </Switch>
             </div>
+
             <Footer />
           </div>
         </Router>

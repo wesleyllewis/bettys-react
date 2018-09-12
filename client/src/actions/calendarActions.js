@@ -49,7 +49,7 @@ export const getItems = () => dispatch => {
 };
 
 // Delete Item
-export const deletePost = id => dispatch => {
+export const deleteItem = id => dispatch => {
   axios
     .delete(`/api/calendarItems/${id}`)
     .then(res =>
