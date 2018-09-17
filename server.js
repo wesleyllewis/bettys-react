@@ -7,6 +7,7 @@ const path = require('path');
 // Api Routes
 const users = require('./routes/api/users');
 const calendarItem = require('./routes/api/calendarItems');
+const foodItem = require('./routes/api/foodItems');
 
 const app = express();
 
@@ -35,6 +36,7 @@ require('./config/passport')(passport);
 // Use routes
 app.use('/api/users', users);
 app.use('/api/calendarItems', calendarItem);
+app.use('/api/foodItems', foodItem);
 
 //Server Static Assets if in Prod
 if (process.env.NODE_ENV === 'production') {
