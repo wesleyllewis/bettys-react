@@ -6,9 +6,9 @@ const FoodItemSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
-  itemName: {
+  name: {
     type: String,
-    require: true
+    required: true
   },
   price: {
     type: String,

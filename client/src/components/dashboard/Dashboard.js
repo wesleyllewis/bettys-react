@@ -18,6 +18,9 @@ class Dashboard extends Component {
               <Link to="/create-item" className="btn btn-lg btn-info">
                 Add A Show
               </Link>
+              <Link to="/create-food" className="btn btn-lg btn-info">
+                Add A Menu Item
+              </Link>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ module.exports = function validateFoodItemInput(data) {
   }
 
   if (Validator.isEmpty(data.price)) {
-    errors.price = 'Price price is required';
+    errors.price = 'Item price is required';
   }
 
   return {

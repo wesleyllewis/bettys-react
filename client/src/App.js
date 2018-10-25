@@ -16,7 +16,8 @@ import Footer from './components/layout/Footer';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Contact from './components/layout/Contact';
-import FoodMenu from './components/layout/FoodMenu';
+import FoodMenu from './components/foodmenu/FoodMenu';
+import FoodForm from './components/foodmenu/FoodForm';
 import Dashboard from './components/dashboard/Dashboard';
 import Calendar from './components/calendar/Calendar';
 import CalendarForm from './components/calendar/CalendarForm';
@@ -69,6 +70,9 @@ class App extends Component {
                   path="/create-item"
                   component={CalendarForm}
                 />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/create-food" component={FoodForm} />
               </Switch>
             </div>
 

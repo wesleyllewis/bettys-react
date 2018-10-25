@@ -77,7 +77,7 @@ router.delete(
   (req, res) => {
     User.findOne({ user: req.user.id }).then(calendarItem => {
       CalendarItem.findById(req.params.id).then(calendarItem => {
-        // Check for post owner
+        // Check for item owner
         if (calendarItem.user.toString() !== req.user.id) {
           return res.status(401).json({ notauthorized: 'User not authorized' });
         }
