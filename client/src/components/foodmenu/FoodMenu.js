@@ -1,34 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import FoodFeed from './FoodFeed';
+import Spinner from '../common/Spinner';
+import { getItems } from '../../actions/foodActions';
 
-export default () => {
-  return (
-    <div className="container">
-      <div className="foodmenu mb-5">
-        <h1 className="text-center mt-3">FOOD</h1>
-        <div className="row">
-          <div className="col-md-4">
-            <h5 className="text-center m-3">Cheeseburger - $9</h5>
-            <h5 className="text-center m-3">Hamburger - $8.50</h5>
-            <h5 className="text-center m-3">Chicken & Swiss - $6.25</h5>
-            <h5 className="text-center m-3">Wings - $9</h5>
-            <h5 className="text-center m-3">BLT - $5</h5>
-          </div>
-          <div className="col-md-4 mb-md-1">
-            <h5 className="text-center m-3">French Fries - $4</h5>
-            <h5 className="text-center m-3">Onion Rings - $5.50</h5>
-            <h5 className="text-center m-3">Nachos - $5.50</h5>
-            <h5 className="text-center m-3">Corndog - $3</h5>
-            <h5 className="text-center m-3">Chicken Tenders - $7.25</h5>
-          </div>
-          <div className="col-md-4">
-            <h5 className="text-center m-3">Ham & Cheese - $5</h5>
-            <h5 className="text-center m-3">Sliders & Chips - $7.00</h5>
-            <h5 className="text-center m-3">Grilled Cheese - $3.00</h5>
-            <h5 className="text-center m-3">Hot Dog - $3.00</h5>
-            <h5 className="text-center m-3">Pizza w/2 Toppings - $11.00</h5>
+class FoodMenu extends Component {
+  componentDidMount() {
+    this.props.getItems();
+  }
+
+  render() {
+    const { items, loading } = this.props.foodItem;
+    let itemContent;
+
+    if (items === null || loading) {
+      itemContent = <Spinner />;
+    } else {
+      itemContent = <FoodFeed items={items} />;
+    }
+    return (
+      <div className="feed">
+        <div className="container">
+          <h1 className="text-center mt-6 mb-3">Tasty Treats</h1>
+          <div className="row">
+            <div className="col-md-12">{itemContent}</div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+}
+
+FoodMenu.propTypes = {
+  getItems: PropTypes.func.isRequired,
+  foodItem: PropTypes.object.isRequired
 };
+
+const mapStateToProps = state => ({
+  foodItem: state.item
+});
+
+export default connect(
+  mapStateToProps,
+  { getItems }
+)(FoodMenu);

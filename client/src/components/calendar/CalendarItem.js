@@ -35,7 +35,7 @@ class CalendarItem extends Component {
           </div>
           <div className="col-md-10">
             <p className="lead">
-              <Moment format="DD/MM/YYYY">{item.date}</Moment>
+              <Moment format="MM/DD/YYYY">{item.date}</Moment>
               {' @ '}
               <Moment format="hh:mm a">{showTime}</Moment>
             </p>

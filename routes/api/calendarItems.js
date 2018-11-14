@@ -62,7 +62,7 @@ router.post(
       time: req.body.time,
       image: req.body.image,
       user: req.user.id,
-      name: req.user.name
+      username: req.user.username
     });
     newCalendarItem.save().then(calendarItem => res.json(calendarItem));
   }

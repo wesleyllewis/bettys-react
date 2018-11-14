@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import Calendar from '../calendar/Calendar';
-import FoodMenu from './FoodMenu';
+import FoodMenu from '../foodmenu/FoodMenu';
 
 class Landing extends Component {
   componentDidMount() {
@@ -30,6 +30,8 @@ class Landing extends Component {
           <div className="calendar">
             <Calendar />
           </div>
+        </div>
+        <div className="container">
           <div className="foodmenu">
             <FoodMenu />
           </div>

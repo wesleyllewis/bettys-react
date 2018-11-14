@@ -10,8 +10,8 @@ module.exports = function validateCalendarItemInput(data) {
   data.time = !isEmpty(data.time) ? data.time : '';
   data.image = !isEmpty(data.image) ? data.image : '';
 
-  if (!Validator.isLength(data.text, { min: 10, max: 300 })) {
-    errors.text = 'Post must be between 20 and 300 characters';
+  if (!Validator.isLength(data.text, { min: 10 })) {
+    errors.text = 'Event info must be at least 10 characters.';
   }
 
   if (Validator.isEmpty(data.title)) {
