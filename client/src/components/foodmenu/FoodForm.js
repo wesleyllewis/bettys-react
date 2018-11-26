@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextFieldGroup from '../common/TextFieldGroup';
-import { addItem } from '../../actions/foodActions';
+import { addFoodItem } from '../../actions/foodActions';
 
 class FoodForm extends Component {
   constructor(props) {
@@ -28,12 +28,12 @@ class FoodForm extends Component {
 
     const { user } = this.props.auth;
 
-    const newItem = {
+    const newFoodItem = {
       name: this.state.name,
       price: this.state.price
     };
 
-    this.props.addItem(newItem);
+    this.props.addFoodItem(newFoodItem);
     this.props.history.push('/dashboard');
   }
 
@@ -81,7 +81,7 @@ class FoodForm extends Component {
 }
 
 FoodForm.propTypes = {
-  addItem: PropTypes.func.isRequired,
+  addFoodItem: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -93,5 +93,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addItem }
+  { addFoodItem }
 )(withRouter(FoodForm));

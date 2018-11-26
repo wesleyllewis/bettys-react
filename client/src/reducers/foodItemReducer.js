@@ -1,45 +1,47 @@
 import {
-  ADD_ITEM,
-  GET_ITEMS,
-  GET_ITEM,
-  DELETE_ITEM,
-  ITEM_LOADING
+  ADD_FOOD,
+  GET_FOODS,
+  GET_FOOD,
+  DELETE_FOOD,
+  FOOD_ITEM_LOADING
 } from '../actions/types';
 
 const initialState = {
-  items: [],
-  item: {},
+  foodItems: [],
+  foodItem: {},
   loading: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case ITEM_LOADING:
+    case FOOD_ITEM_LOADING:
       return {
         ...state,
         loading: true
       };
-    case GET_ITEMS:
+    case GET_FOODS:
       return {
         ...state,
-        items: action.payload,
+        foodItems: action.payload,
         loading: false
       };
-    case GET_ITEM:
+    case GET_FOOD:
       return {
         ...state,
-        item: action.payload,
+        foodItem: action.payload,
         loading: false
       };
-    case ADD_ITEM:
+    case ADD_FOOD:
       return {
         ...state,
-        items: [action.payload, ...state.items]
+        foodItems: [action.payload, ...state.foodItems]
       };
-    case DELETE_ITEM:
+    case DELETE_FOOD:
       return {
         ...state,
-        items: state.items.filter(item => item._id !== action.payload)
+        foodItems: state.foodItems.filter(
+          foodItem => foodItem._id !== action.payload
+        )
       };
     default:
       return state;

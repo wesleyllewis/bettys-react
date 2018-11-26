@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
-import { addItem } from '../../actions/calendarActions';
+import { addCalendarItem } from '../../actions/calendarActions';
 
 class CalendarForm extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class CalendarForm extends Component {
 
     const { user } = this.props.auth;
 
-    const newItem = {
+    const newCalendarItem = {
       title: this.state.title,
       date: this.state.date,
       text: this.state.text,
@@ -40,7 +40,7 @@ class CalendarForm extends Component {
       name: user.name
     };
 
-    this.props.addItem(newItem);
+    this.props.addcalendarItem(newCalendarItem);
     this.props.history.push('/dashboard');
   }
 
@@ -105,7 +105,7 @@ class CalendarForm extends Component {
 }
 
 CalendarForm.propTypes = {
-  addItem: PropTypes.func.isRequired,
+  addCalendarItem: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -117,5 +117,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addItem }
+  { addCalendarItem }
 )(withRouter(CalendarForm));

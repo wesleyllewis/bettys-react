@@ -4,28 +4,28 @@ import { connect } from 'react-redux';
 // import CalendarForm from './CalendarForm';
 import CalendarFeed from './CalendarFeed';
 import Spinner from '../common/Spinner';
-import { getItems } from '../../actions/calendarActions';
+import { getCalendarItems } from '../../actions/calendarActions';
 
 class Calendar extends Component {
   componentDidMount() {
-    this.props.getItems();
+    this.props.getCalendarItems();
   }
 
   render() {
-    const { items, loading } = this.props.item;
-    let itemContent;
+    const { calendarItems, loading } = this.props.calendarItem;
+    let calendarItemContent;
 
-    if (items === null || loading) {
-      itemContent = <Spinner />;
+    if (calendarItems === null || loading) {
+      calendarItemContent = <Spinner />;
     } else {
-      itemContent = <CalendarFeed items={items} />;
+      calendarItemContent = <CalendarFeed calendarItems={calendarItems} />;
     }
     return (
       <div className="feed">
         <div className="container">
           <h1 className="text-center mt-6 mb-3">Upcoming Shows at Betty's</h1>
           <div className="row">
-            <div className="col-md-12">{itemContent}</div>
+            <div className="col-md-12">{calendarItemContent}</div>
           </div>
         </div>
       </div>
@@ -34,15 +34,15 @@ class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-  getItems: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired
+  getCalendarItems: PropTypes.func.isRequired,
+  calendarItem: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  item: state.item
+  calendarItem: state.calendarItem
 });
 
 export default connect(
   mapStateToProps,
-  { getItems }
+  { getCalendarItems }
 )(Calendar);

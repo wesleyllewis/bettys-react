@@ -4,13 +4,15 @@ import CalendarItem from './CalendarItem';
 
 class CalendarFeed extends Component {
   render() {
-    const { items } = this.props;
-    return items.map(item => <CalendarItem key={item._id} item={item} />);
+    const { calendarItems } = this.props;
+    return calendarItems.map(calendarItem => (
+      <CalendarItem key={calendarItem._id} calendarItem={calendarItem} />
+    ));
   }
 }
 
 CalendarFeed.propTypes = {
-  items: PropTypes.array.isRequired
+  calendarItems: PropTypes.array.isRequired
 };
 
 export default CalendarFeed;

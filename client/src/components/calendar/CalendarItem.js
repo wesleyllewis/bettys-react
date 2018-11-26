@@ -4,7 +4,10 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 // import classnames from 'classnames';
 import { Link } from 'react-router-dom';
-import { deleteItem, getItem } from '../../actions/calendarActions';
+import {
+  deleteCalendarItem,
+  getCalendarItem
+} from '../../actions/calendarActions';
 
 class CalendarItem extends Component {
   // componentDidMount() {
@@ -20,33 +23,33 @@ class CalendarItem extends Component {
   // }
 
   onDeleteClick(id) {
-    this.props.deleteItem(id);
+    this.props.deleteCalendarItem(id);
   }
 
   render() {
-    const { item, auth, showActions } = this.props;
-    let showTime = parseInt(item.time);
+    const { calendarItem, auth, showActions } = this.props;
+    let showTime = parseInt(calendarItem.time);
     return (
       // <Link to={`/calendarItems/${item.id}`}>
       <div className="card card-body mb-3">
         <div className="row">
           <div className="col-md-2">
-            <p className="text-center">{item.title}</p>
+            <p className="text-center">{calendarItem.title}</p>
           </div>
           <div className="col-md-10">
             <p className="lead">
-              <Moment format="MM/DD/YYYY">{item.date}</Moment>
+              <Moment format="MM/DD/YYYY">{calendarItem.date}</Moment>
               {' @ '}
               <Moment format="hh:mm a">{showTime}</Moment>
             </p>
 
-            <p className="lead">{item.text}</p>
+            <p className="lead">{calendarItem.text}</p>
             {showActions ? (
               <span>
                 {' '}
-                {item.user === auth.user.id ? (
+                {calendarItem.user === auth.user.id ? (
                   <button
-                    onClick={this.onDeleteClick.bind(this, item._id)}
+                    onClick={this.onDeleteClick.bind(this, calendarItem._id)}
                     type="button"
                     className="btn btn-danger mr-1"
                   >
@@ -68,10 +71,10 @@ CalendarItem.defaultProps = {
 };
 
 CalendarItem.propTypes = {
-  deleteItem: PropTypes.func.isRequired,
-  getItem: PropTypes.func.isRequired,
+  deleteCalendarItem: PropTypes.func.isRequired,
+  getCalendarItem: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  item: PropTypes.object.isRequired
+  calendarItem: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -80,5 +83,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteItem, getItem }
+  { deleteCalendarItem, getCalendarItem }
 )(CalendarItem);

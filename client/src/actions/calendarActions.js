@@ -1,23 +1,23 @@
 import axios from 'axios';
 
 import {
-  ADD_ITEM,
+  ADD_SHOW,
   GET_ERRORS,
-  GET_ITEMS,
-  GET_ITEM,
-  ITEM_LOADING,
-  DELETE_ITEM,
+  GET_SHOWS,
+  GET_SHOW,
+  SHOW_LOADING,
+  DELETE_SHOW,
   CLEAR_ERRORS
 } from './types';
 
-// Add Item
-export const addItem = itemData => dispatch => {
+// Add Calendar Item
+export const addCalendarItem = itemData => dispatch => {
   dispatch(clearErrors());
   axios
     .post('/api/calendarItems', itemData)
     .then(res =>
       dispatch({
-        type: ADD_ITEM,
+        type: ADD_SHOW,
         payload: res.data
       })
     )
@@ -29,32 +29,32 @@ export const addItem = itemData => dispatch => {
     );
 };
 
-// Get Items
-export const getItems = () => dispatch => {
-  dispatch(setItemLoading());
+// Get Calendar Items
+export const getCalendarItems = () => dispatch => {
+  dispatch(setCalendarItemLoading());
   axios
     .get('/api/calendarItems')
     .then(res =>
       dispatch({
-        type: GET_ITEMS,
+        type: GET_SHOWS,
         payload: res.data
       })
     )
     .catch(err =>
       dispatch({
-        type: GET_ITEMS,
+        type: GET_SHOWS,
         payload: null
       })
     );
 };
 
-// Delete Item
-export const deleteItem = id => dispatch => {
+// Delete Calendar Item
+export const deleteCalendarItem = id => dispatch => {
   axios
     .delete(`/api/calendarItems/${id}`)
     .then(res =>
       dispatch({
-        type: DELETE_ITEM,
+        type: DELETE_SHOW,
         payload: id
       })
     )
@@ -66,14 +66,14 @@ export const deleteItem = id => dispatch => {
     );
 };
 
-// Get Item
-export const getItem = id => dispatch => {
-  dispatch(setItemLoading());
+// Get Calendar Item
+export const getCalendarItem = id => dispatch => {
+  dispatch(setCalendarItemLoading());
   axios
     .get(`/api/calendarItems/${id}`)
     .then(res =>
       dispatch({
-        type: GET_ITEM,
+        type: GET_SHOW,
         payload: res.data
       })
     )
@@ -86,9 +86,9 @@ export const getItem = id => dispatch => {
 };
 
 // Set Loading State
-export const setItemLoading = () => {
+export const setCalendarItemLoading = () => {
   return {
-    type: ITEM_LOADING
+    type: SHOW_LOADING
   };
 };
 

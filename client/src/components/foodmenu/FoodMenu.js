@@ -3,28 +3,28 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FoodFeed from './FoodFeed';
 import Spinner from '../common/Spinner';
-import { getItems } from '../../actions/foodActions';
+import { getFoods } from '../../actions/foodActions';
 
 class FoodMenu extends Component {
   componentDidMount() {
-    this.props.getItems();
+    this.props.getFoods();
   }
 
   render() {
-    const { items, loading } = this.props.foodItem;
-    let itemContent;
+    const { foodItems, loading } = this.props.foodItem;
+    let foodItemContent;
 
-    if (items === null || loading) {
-      itemContent = <Spinner />;
+    if (foodItems === null || loading) {
+      foodItemContent = <Spinner />;
     } else {
-      itemContent = <FoodFeed items={items} />;
+      foodItemContent = <FoodFeed foodItems={foodItems} />;
     }
     return (
       <div className="feed">
         <div className="container">
           <h1 className="text-center mt-6 mb-3">Tasty Treats</h1>
           <div className="row">
-            <div className="col-md-12">{itemContent}</div>
+            <div className="col-md-12">{foodItemContent}</div>
           </div>
         </div>
       </div>
@@ -33,15 +33,15 @@ class FoodMenu extends Component {
 }
 
 FoodMenu.propTypes = {
-  getItems: PropTypes.func.isRequired,
+  getFoods: PropTypes.func.isRequired,
   foodItem: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  foodItem: state.item
+  foodItem: state.foodItem
 });
 
 export default connect(
   mapStateToProps,
-  { getItems }
+  { getFoods }
 )(FoodMenu);

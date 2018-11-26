@@ -3,17 +3,22 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
+const cors = require('cors');
 
 // Api Routes
 const users = require('./routes/api/users');
 const calendarItem = require('./routes/api/calendarItems');
 const foodItem = require('./routes/api/foodItems');
+const photoItem = require('./routes/api/photoItems');
 
 const app = express();
 
 // Body Parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// CORS middleware
+app.use(cors());
 
 //Db Config
 const db = require('./config/keys').mongoURI;
@@ -37,6 +42,7 @@ require('./config/passport')(passport);
 app.use('/api/users', users);
 app.use('/api/calendarItems', calendarItem);
 app.use('/api/foodItems', foodItem);
+app.use('/api/photoItems', photoItem);
 
 //Server Static Assets if in Prod
 if (process.env.NODE_ENV === 'production') {

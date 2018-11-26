@@ -1,23 +1,23 @@
 import axios from 'axios';
 
 import {
-  ADD_ITEM,
+  ADD_FOOD,
   GET_ERRORS,
-  GET_ITEMS,
-  GET_ITEM,
-  ITEM_LOADING,
-  DELETE_ITEM,
+  GET_FOODS,
+  GET_FOOD,
+  FOOD_ITEM_LOADING,
+  DELETE_FOOD,
   CLEAR_ERRORS
 } from './types';
 
-// Add Item
-export const addItem = itemData => dispatch => {
+// Add Food Item
+export const addFoodItem = itemData => dispatch => {
   dispatch(clearErrors());
   axios
     .post('/api/foodItems', itemData)
     .then(res =>
       dispatch({
-        type: ADD_ITEM,
+        type: ADD_FOOD,
         payload: res.data
       })
     )
@@ -29,32 +29,32 @@ export const addItem = itemData => dispatch => {
     );
 };
 
-// Get Items
-export const getItems = () => dispatch => {
-  dispatch(setItemLoading());
+// Get Food Items
+export const getFoods = () => dispatch => {
+  dispatch(setFoodItemLoading());
   axios
     .get('/api/foodItems')
     .then(res =>
       dispatch({
-        type: GET_ITEMS,
+        type: GET_FOODS,
         payload: res.data
       })
     )
     .catch(err =>
       dispatch({
-        type: GET_ITEMS,
+        type: GET_FOODS,
         payload: null
       })
     );
 };
 
-// Delete Item
-export const deleteItem = id => dispatch => {
+// Delete Food Item
+export const deleteFoodItem = id => dispatch => {
   axios
     .delete(`api/foodItems/${id}`)
     .then(res =>
       dispatch({
-        type: DELETE_ITEM,
+        type: DELETE_FOOD,
         payload: id
       })
     )
@@ -66,14 +66,14 @@ export const deleteItem = id => dispatch => {
     );
 };
 
-// Get Item
-export const getitem = id => dispatch => {
-  dispatch(setItemLoading());
+// Get Food Item
+export const getFoodItem = id => dispatch => {
+  dispatch(setFoodItemLoading());
   axios
     .get(`/api/foodItems/${id}`)
     .then(res =>
       dispatch({
-        type: GET_ITEM,
+        type: GET_FOOD,
         payload: res.data
       })
     )
@@ -86,9 +86,9 @@ export const getitem = id => dispatch => {
 };
 
 // Set Loading State
-export const setItemLoading = () => {
+export const setFoodItemLoading = () => {
   return {
-    type: ITEM_LOADING
+    type: FOOD_ITEM_LOADING
   };
 };
 

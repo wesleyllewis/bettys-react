@@ -4,13 +4,15 @@ import FoodItem from './FoodItem';
 
 class FoodFeed extends Component {
   render() {
-    const { items } = this.props;
-    return items.map(item => <FoodItem key={item._id} item={item} />);
+    const { foodItems } = this.props;
+    return foodItems.map(foodItem => (
+      <FoodItem key={foodItem._id} foodItem={foodItem} />
+    ));
   }
 }
 
 FoodFeed.propTypes = {
-  items: PropTypes.array.isRequired
+  foodItems: PropTypes.array.isRequired
 };
 
 export default FoodFeed;
